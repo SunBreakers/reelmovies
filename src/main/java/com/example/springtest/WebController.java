@@ -12,7 +12,11 @@ public class WebController {
 		model.addAttribute("movies", movies);
 		return parseMovies.getMovies();
 	}
-	
+	@GetMapping("/predicate")
+	public String getICE(@RequestParam(name="predicate", required=false) String predicate, Model model) {
+		model.addAttribute("predicate", predicate);
+		return PredicateEx.getICE();
+	}
 	//Duc Thanh Nguyen
 	 @GetMapping("/hi")
 	 public String hi(@RequestParam(value = "name", defaultValue = "a good day!!!") String name) {

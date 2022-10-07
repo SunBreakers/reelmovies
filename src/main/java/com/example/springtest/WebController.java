@@ -1,5 +1,7 @@
 package com.example.springtest;
 
+import java.io.IOException;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +31,11 @@ public class WebController {
 	{
 		return String.format("Welcome future SunBreaker, %s!", name);
 	}
+
+	/* @GetMapping("/case")
+	public String getCasing(@RequestParam(name="casing", required=false) String casing, Model model) throws IOException {
+		return commonsIOEX.getCase();
+	} */
 	
 	//Tyler Kloss
 	@GetMapping("/howdy")

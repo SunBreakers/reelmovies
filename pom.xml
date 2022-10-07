@@ -47,6 +47,13 @@
 			<version>31.1-jre</version>
 		</dependency>
 
+		<!-- Ryan Mercado -->
+		<dependency>
+   		   <groupId>org.apache.commons</groupId>
+ 		   <artifactId>commons-math3</artifactId>
+ 		   <version>3.6.1</version>
+		</dependency>
+
 		<!-- Noe Rivera-->
 		<dependency>
     		<groupId>commons-io</groupId>

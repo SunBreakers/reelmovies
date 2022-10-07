@@ -32,6 +32,12 @@ public class WebController {
 		return String.format("Welcome future SunBreaker, %s!", name);
 	}
 
+	//Ryan Mercado
+	@GetMapping("/RandomNumber")
+	public double RandomNumber() 
+	{
+		return RanNum.calculate();
+	}
 	/* @GetMapping("/case")
 	public String getCasing(@RequestParam(name="casing", required=false) String casing, Model model) throws IOException {
 		return commonsIOEX.getCase();

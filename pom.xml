@@ -60,6 +60,13 @@
     		<artifactId>commons-io</artifactId>
     		<version>2.11.0</version>
 		</dependency>
+		
+		<!-- Tyler Kloss-->
+		<dependency>
+			<groupId>org.clojure</groupId>
+			<artifactId>clojure</artifactId>
+			<version>1.8.0</version>
+		</dependency>
 
 	</dependencies>
 

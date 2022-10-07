@@ -48,4 +48,9 @@ public class WebController {
 	public String howdy(@RequestParam(value = "name", defaultValue = "Partner") String name) {
 		return String.format("Howdy %s!", name);
 	}
+	@GetMapping("/test")
+	public String getTest(@RequestParam(name="test", required=false) String test, Model model) {
+		model.addAttribute("test", test);
+		return clojureTest.clojure();
+	}
 }

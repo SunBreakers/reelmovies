@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Using Bootstrap for CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <title>Movies</title>
+        <meta charset="utf-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=yes">
+    </head>
+
+    <body>
+        <div class="center" align="center">
+        <img src="${movie.poster_path}" alt="">
+        <p th:text="'Movies: ' + ${movieData} + '!'" />
+        <p th:text="'IMDB Link: ' + ${imdb_id}" />
+    </body>
+</html>

@@ -9,16 +9,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class WebController {
-	@GetMapping("/movies")
-	public String getMovies(@RequestParam(name="movies", required=false) String movies, Model model) {
-		model.addAttribute("movies", movies);
-		return parseMovies.getMovies();
+	// Julian Rowe
+	// @GetMapping("/moviesTest")
+	// public String getMoviesFromAPI(@RequestParam(name="movies", required=false) String movies, Model model) {
+	// 	model.addAttribute("movies", movies);
+	// 	return parseMovies.getMoviesFromAPI();
+	// }
+	@GetMapping("/jsoup")
+	public String getMovies(@RequestParam(name="jsoup", required=false) String jsoup, Model model) {
+		model.addAttribute("jsoup", jsoup);
+		return parseMovies.jsoupParse();
 	}
+
 	@GetMapping("/predicate")
 	public String getICE(@RequestParam(name="predicate", required=false) String predicate, Model model) {
 		model.addAttribute("predicate", predicate);
 		return PredicateEx.getICE();
 	}
+	
 	//Duc Thanh Nguyen
 	 @GetMapping("/hi")
 	 public String hi(@RequestParam(value = "name", defaultValue = "a good day!!!") String name) {

@@ -6,46 +6,71 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 
-import java.util.Random;
-
 import com.uwetrottmann.tmdb2.Tmdb;
 import com.uwetrottmann.tmdb2.entities.Movie;
+import com.uwetrottmann.tmdb2.entities.Genre;
 import com.uwetrottmann.tmdb2.services.MoviesService;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 import java.io.IOException;
 
 @Controller
-public class parseMovies{    
+public class parseMovies{
+    static String poster_path;
+    static String movieTitle;
+    static String movieOverview;
+    static List<Genre> movieGenres; // FIX: Printing Genres
+    // static String movieGenres; // FIX: Printing Genres
+    static int movieRuntime;
+    static Date movieReleaseDate;
+    static double movieVoteAverage;
+    static int movieVoteCount;
+    static String imdb_id;
+    // static String movieRecommendations;
+    // static String movieVideo;
+
     // https://www.themoviedb.org/documentation/api
     // https://github.com/UweTrottmann/tmdb-java
-    public static String getMoviesFromAPI(){
-        StringBuilder str = new StringBuilder();
+    public static void getMoviesFromAPI(){
         Random random = new Random();
         int randomMovie = random.nextInt(812104) + 1;
 
-        Tmdb tmdb = new Tmdb("API_KEY"); // Insert TheMovieDatabase API Key Here
+        Tmdb tmdb = new Tmdb("5ae9bfda7c93c18a70125da1d0f9cb7d"); // Insert TheMovieDatabase API Key Here
         MoviesService moviesService = tmdb.moviesService(); 
         try {
             retrofit2.Response<Movie> response = moviesService
                 .summary(randomMovie, "") // 550 = Fight Club
                 .execute();
             if (response.isSuccessful()) {
-                Movie movie = response.body();
-                str.append("Poster Path: https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + movie.poster_path);
-                str.append("<br>Title: " + movie.title);
-                str.append("<br>Overview: " + movie.overview);
-                str.append("<br>Genres: " + movie.genres.toString()); // FIX 
-                str.append("<br>Runtime: " + movie.runtime + " minutes");
-                str.append("<br>Release Date: " + movie.release_date);
-                str.append("<br>Vote Average: " + movie.vote_average + "/10");
-                str.append("<br>Vote Count: " + movie.vote_count + " votes");
-                str.append("<br>IMDB ID: https://www.imdb.com/title/" + movie.imdb_id);
-                System.out.println(str);
+                Movie movie = response.body(); 
+                while(movie == null || movie.adult == true || movie.poster_path == null){ // prevents null, adult movies or movies without posters from showing
+                    randomMovie = random.nextInt(812104) + 1;
+                    response = moviesService
+                        .summary(randomMovie, "")
+                        .execute();
+                    movie = response.body();
+                    if(movie != null)
+                        System.out.println("Testing movie: " + movie.title);
+                }
+                poster_path = movie.poster_path;
+                movieTitle = movie.title;
+                movieOverview = movie.overview;
+                movieGenres = movie.genres; // FIX: Printing Genres
+                movieRuntime = movie.runtime;
+                movieReleaseDate = movie.release_date;
+                movieVoteAverage = movie.vote_average;
+                // movieVoteAverage = movie.rating;
+                movieVoteCount = movie.vote_count;
+                imdb_id = movie.imdb_id;
+                // movieRecommendations = movie.recommendations.toString();
+                // movieRecommendations = movie.similar.toString();
+                // movieVideo = movie.videos.toString();
             }
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
-        return str.toString();
     }
 
     public static String jsoupParse(){

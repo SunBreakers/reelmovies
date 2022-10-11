@@ -12,8 +12,23 @@ xmlns:th="http://www.thymeleaf.org">
 
     <body>
         <div class="center" align="center">
-        <img src="${movie.poster_path}" alt="">
-        <p th:text="'Movies: ' + ${movieData} + '!'" />
-        <p th:text="'IMDB Link: ' + ${imdb_id}" />
+        <a th:href="${poster_path}" target="_blank">
+            <img th:src="@{${poster_path}}" th:alt="${movieTitle} + ' poster'"/>
+        </a>
+        <h1>
+            <p th:text="'Title: ' + ${movieTitle}" />
+        </h1>
+        <p th:text="'Overview: ' + ${movieOverview}" />
+        <p th:text="'Genres: ' + ${movieGenres}" /> <!-- FIX: Printing Genres -->
+        <p th:text="'Runtime: ' + ${movieRuntime} + ' minutes'" />
+        <p th:text="'Release Date: ' + ${movieReleaseDate}" />
+        <p th:text="'Vote Average: ' + ${movieVoteAverage} + '/10.0'" />
+        <p th:text="'Vote Count: ' + ${movieVoteCount} + ' votes'" />
+        <!-- <p th:href="${imdb_id}" th:text="'IMDB Link: ' + ${imdb_id}" /> -->
+        <p>
+            IMDB Link: <a th:href="${imdb_id}" target="_blank"><p th:text="${imdb_id}" /></a>
+        </p>
+        <!-- <p th:text="'Movie Recommendations: ' + ${movieRecommendations}" /> -->
+        <!-- <p th:text="'Movie Videos: ' + ${movieVideos}" /> -->
     </body>
 </html>

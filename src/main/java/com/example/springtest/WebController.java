@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WebController {
 	// Julian Rowe
-	// @GetMapping("/moviesTest")
-	// public String getMoviesFromAPI(@RequestParam(name="movies", required=false) String movies, Model model) {
-	// 	model.addAttribute("movies", movies);
-	// 	return parseMovies.getMoviesFromAPI();
-	// }
 	@GetMapping("/jsoup")
 	public String getMovies(@RequestParam(name="jsoup", required=false) String jsoup, Model model) {
 		model.addAttribute("jsoup", jsoup);

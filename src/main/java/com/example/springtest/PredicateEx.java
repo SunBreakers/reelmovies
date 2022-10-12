@@ -20,6 +20,7 @@ public class PredicateEx {//testing
             //System.out.println(i);
             str.append("<br>value: " + i);
         }
+            str.append("Hello world!!!");
         predicate = str.toString();
         return predicate;
     }

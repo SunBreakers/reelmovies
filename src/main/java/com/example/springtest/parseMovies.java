@@ -44,7 +44,8 @@ public class parseMovies{
                 .summary(randomMovie, "") // 550 = Fight Club
                 .execute();
             if (response.isSuccessful()) {
-                Movie movie = response.body(); 
+                Movie movie = response.body();
+                System.out.println("Testing movie: (" + randomMovie + ") " + movie.title);
                 while(movie == null || movie.adult == true || movie.poster_path == null){ // prevents null, adult movies or movies without posters from showing
                     randomMovie = random.nextInt(812104) + 1;
                     response = moviesService
@@ -52,7 +53,7 @@ public class parseMovies{
                         .execute();
                     movie = response.body();
                     if(movie != null)
-                        System.out.println("Testing movie: " + movie.title);
+                        System.out.println("Testing movie: (" + randomMovie + ") " + movie.title);
                 }
                 poster_path = movie.poster_path;
                 movieTitle = movie.title;

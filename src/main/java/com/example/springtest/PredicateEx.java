@@ -5,7 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import java.util.List;
 
-public class PredicateEx {
+public class PredicateEx {//testing
     static String predicate;
     public static String getICE(){
         StringBuilder str = new StringBuilder();
@@ -20,6 +20,7 @@ public class PredicateEx {
             //System.out.println(i);
             str.append("<br>value: " + i);
         }
+            str.append("Hello world!!!");
         predicate = str.toString();
         return predicate;
     }

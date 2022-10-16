@@ -88,8 +88,8 @@ public class parseMovies{
         return this.movie.runtime;
     }
 
-    public Date getReleaseDate() {
-        return this.movie.release_date;
+    public String getReleaseDate() {
+        return new SimpleDateFormat("MMMM d, yyyy").format(this.movie.release_date);
     }
 
     public double getVoteAverage() {

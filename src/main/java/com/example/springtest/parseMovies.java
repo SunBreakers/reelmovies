@@ -15,63 +15,93 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 @Controller
 public class parseMovies{
-    static String poster_path;
-    static String movieTitle;
-    static String movieOverview;
-    static List<Genre> movieGenres; // FIX: Printing Genres
-    // static String movieGenres; // FIX: Printing Genres
-    static int movieRuntime;
-    static Date movieReleaseDate;
-    static double movieVoteAverage;
-    static int movieVoteCount;
-    static String imdb_id;
-    // static String movieRecommendations;
-    // static String movieVideo;
+    private Movie movie = new Movie();
+    // private String movieRecommendations;
+    // private String movieVideo;
+
+    private static final SimpleDateFormat JSON_STRING_DATE = new SimpleDateFormat("yyy-MM-dd");
 
     // https://www.themoviedb.org/documentation/api
     // https://github.com/UweTrottmann/tmdb-java
-    public static void getMoviesFromAPI(){
+    public void getMoviesFromAPI(int movieID)
+    {
         Random random = new Random();
-        int randomMovie = random.nextInt(812104) + 1;
+        int randomMovie = movieID;
 
         Tmdb tmdb = new Tmdb("5ae9bfda7c93c18a70125da1d0f9cb7d"); // Insert TheMovieDatabase API Key Here
         MoviesService moviesService = tmdb.moviesService(); 
-        try {
+        try 
+        {
             retrofit2.Response<Movie> response = moviesService
                 .summary(randomMovie, "") // 550 = Fight Club
                 .execute();
-            if (response.isSuccessful()) {
-                Movie movie = response.body();
-                System.out.println("Testing movie: (" + randomMovie + ") " + movie.title);
-                while(movie == null || movie.adult == true || movie.poster_path == null){ // prevents null, adult movies or movies without posters from showing
+            if (response.isSuccessful()) 
+            {
+                this.movie = response.body();
+                System.out.println("Testing movie: (" + randomMovie + ") " + this.movie.title);
+                while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null) // prevents null, adult movies or movies without posters from showing
+                {
                     randomMovie = random.nextInt(812104) + 1;
                     response = moviesService
                         .summary(randomMovie, "")
                         .execute();
-                    movie = response.body();
+                        this.movie = response.body();
                     if(movie != null)
-                        System.out.println("Testing movie: (" + randomMovie + ") " + movie.title);
+                    {
+                        System.out.println("Testing movie: (" + randomMovie + ") " + this.movie.title);
+                    }
                 }
-                poster_path = movie.poster_path;
-                movieTitle = movie.title;
-                movieOverview = movie.overview;
-                movieGenres = movie.genres; // FIX: Printing Genres
-                movieRuntime = movie.runtime;
-                movieReleaseDate = movie.release_date;
-                movieVoteAverage = movie.vote_average;
-                // movieVoteAverage = movie.rating;
-                movieVoteCount = movie.vote_count;
-                imdb_id = movie.imdb_id;
-                // movieRecommendations = movie.recommendations.toString();
-                // movieRecommendations = movie.similar.toString();
-                // movieVideo = movie.videos.toString();
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             System.out.println("Exception: " + e);
         }
+    }
+
+    public void setMovie(int newMovie) {
+        getMoviesFromAPI(newMovie);
+        this.movie.id = movie.id;
+    }
+
+    public String getPosterPath() {
+        return this.movie.poster_path;
+    }
+
+    public String getTitle() {
+        return this.movie.title;
+    }
+
+    public String getOverview() {
+        return this.movie.overview;
+    }
+
+    public List<Genre> getGenres() {
+        return this.movie.genres;
+    }
+
+    public int getRuntime() {
+        return this.movie.runtime;
+    }
+
+    public Date getReleaseDate() {
+        return this.movie.release_date;
+    }
+
+    public double getVoteAverage() {
+        return this.movie.vote_average;
+    }
+
+    public int getVoteCount() {
+        return this.movie.vote_count;
+    }
+
+    public String getIMDB_ID() {
+        return this.movie.imdb_id;
     }
 
     public static String jsoupParse(){

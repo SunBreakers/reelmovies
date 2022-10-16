@@ -4,6 +4,7 @@ import org.junit.*;
 
 public class GenerateRandomIntTest {
     private GenerateRandomInt c;
+    // private parseMovies m;
 
     @Before
     public void setup() {

@@ -47,6 +47,12 @@ public class parseMoviesTest {
         m.setMovie(550);
         String testPoster = m.getPosterPath();
         Assert.assertEquals("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg", testPoster);
-
+    }
+    //Ryan Mercado
+    @Test
+    public void testParseReleaseDate(){
+        m.setMovie(550);
+        String testDate = m.getReleaseDate();
+        Assert.assertEquals("October 15, 1999",testDate);
     }
 }

@@ -36,7 +36,7 @@ public class parseMoviesTest {
     @Test
     public void testGetRunTime(){
         m.setMovie(550);
-        int testRunTime = 139;
+        int testRunTime = m.getRuntime();
         Assert.assertEquals(139, testRunTime);
     }
 }

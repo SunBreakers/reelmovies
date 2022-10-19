@@ -31,4 +31,12 @@ public class parseMoviesTest {
         String testOverview = m.getOverview();
         Assert.assertEquals("A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.", testOverview);
     }
+    //Duc Thanh Nguyen
+    @Test
+    public void testIMDB_ID(){
+        parseMovies m = new parseMovies();
+        m.setMovie(550);
+        String testIMDB = m.getIMDB_ID();
+        Assert.assertNotNull(testIMDB);
+    }
 }

@@ -20,7 +20,7 @@ public class MovieController {
         model.addAttribute("poster_path", "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + m.getPosterPath());
         model.addAttribute("movieTitle", m.getTitle());
         model.addAttribute("movieOverview", m.getOverview());
-        model.addAttribute("movieGenres", m.getGenres()); // FIX: Printing Genres
+        model.addAttribute("movieGenres", m.getGenres());
         model.addAttribute("movieRuntime", m.getRuntime());
         model.addAttribute("movieReleaseDate", m.getReleaseDate());
         model.addAttribute("movieVoteAverage", m.getVoteAverage());

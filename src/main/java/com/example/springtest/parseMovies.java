@@ -78,8 +78,18 @@ public class parseMovies{
         return this.movie.overview;
     }
 
-    public List<Genre> getGenres() {
-        return this.movie.genres;
+    public String getGenres() {
+        String genreList = "";
+        for (Genre genre : this.movie.genres) {
+            if (genreList == "") {
+                genreList = genreList + genre.name;
+            }
+            else {
+                genreList = genreList + ", " + genre.name;
+            }
+        }
+
+        return genreList;
     }
 
     public int getRuntime() {

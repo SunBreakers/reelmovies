@@ -11,7 +11,6 @@ import com.uwetrottmann.tmdb2.entities.Movie;
 import com.uwetrottmann.tmdb2.entities.Genre;
 import com.uwetrottmann.tmdb2.services.MoviesService;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.io.IOException;
@@ -20,10 +19,9 @@ import java.text.SimpleDateFormat;
 @Controller
 public class parseMovies{
     private Movie movie = new Movie();
+    private static final String API_KEY = "5ae9bfda7c93c18a70125da1d0f9cb7d";
     // private String movieRecommendations;
     // private String movieVideo;
-
-    private static final SimpleDateFormat JSON_STRING_DATE = new SimpleDateFormat("yyy-MM-dd");
 
     // https://www.themoviedb.org/documentation/api
     // https://github.com/UweTrottmann/tmdb-java
@@ -32,7 +30,7 @@ public class parseMovies{
         Random random = new Random();
         int randomMovie = movieID;
 
-        Tmdb tmdb = new Tmdb("5ae9bfda7c93c18a70125da1d0f9cb7d"); // Insert TheMovieDatabase API Key Here
+        Tmdb tmdb = new Tmdb(API_KEY); // Insert TheMovieDatabase API Key Here
         MoviesService moviesService = tmdb.moviesService(); 
         try 
         {
@@ -43,7 +41,7 @@ public class parseMovies{
             {
                 this.movie = response.body();
                 System.out.println("Testing movie: (" + randomMovie + ") " + this.movie.title);
-                while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null) // prevents null, adult movies or movies without posters from showing
+                while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null || this.movie.imdb_id == null || this.movie.runtime == null || this.movie.release_date == null) // prevents null, adult movies or movies without posters from showing
                 {
                     randomMovie = random.nextInt(812104) + 1;
                     response = moviesService

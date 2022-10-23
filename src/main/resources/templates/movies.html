@@ -30,5 +30,8 @@ xmlns:th="http://www.thymeleaf.org">
         </p>
         <!-- <p th:text="'Movie Recommendations: ' + ${movieRecommendations}" /> -->
         <!-- <p th:text="'Movie Videos: ' + ${movieVideos}" /> -->
+
+        <input type="button"  onclick="location.href='/movies?name=disliked'" value="Dislike" >
+        <input type="button"  onclick="location.href='/movies?name=liked'" value="Like" >
     </body>
 </html>

@@ -26,7 +26,6 @@ public class parseMoviesTest {
 
     @Test
     public void testParseMovieOverview() {
-        parseMovies m = new parseMovies();
         m.setMovie(550);
         String testOverview = m.getOverview();
         Assert.assertEquals("A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.", testOverview);
@@ -53,7 +52,7 @@ public class parseMoviesTest {
     public void testParseMoviePoster() {
         m = new parseMovies();
         m.setMovie(550);
-        String testPoster = m.getPosterPath();
+        String testPoster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + m.getPosterPath();
         Assert.assertEquals("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg", testPoster);
     }
     //Ryan Mercado

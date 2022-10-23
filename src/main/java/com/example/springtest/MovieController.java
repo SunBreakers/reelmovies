@@ -3,6 +3,7 @@ package com.example.springtest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Random;
 
@@ -10,7 +11,7 @@ import java.util.Random;
 public class MovieController {
 
 	@GetMapping("/movies")
-	public String movies(String movies, Model model) {
+	public String movies(@RequestParam(name="liked", required=false)String movies, Model model) {
         Random random = new Random();
         int randomMovie = random.nextInt(812104) + 1;
         parseMovies m = new parseMovies();

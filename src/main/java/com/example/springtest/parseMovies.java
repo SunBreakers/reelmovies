@@ -11,7 +11,6 @@ import com.uwetrottmann.tmdb2.entities.Movie;
 import com.uwetrottmann.tmdb2.entities.Genre;
 import com.uwetrottmann.tmdb2.services.MoviesService;
 
-import java.util.List;
 import java.util.Random;
 import java.io.IOException;
 import java.text.SimpleDateFormat;

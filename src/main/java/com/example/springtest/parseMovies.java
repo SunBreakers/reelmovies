@@ -78,6 +78,9 @@ public class parseMovies{
     }
 
     public String getGenres() {
+        if(this.movie.genres == null) {
+            return null;
+        }
         String genreList = "";
         for (Genre genre : this.movie.genres) {
             if (genreList == "") {
@@ -92,18 +95,30 @@ public class parseMovies{
     }
 
     public int getRuntime() {
+        if(this.movie.runtime == null) {
+            return 0;
+        }
         return this.movie.runtime;
     }
 
     public String getReleaseDate() {
+        if(this.movie.release_date == null) {
+            return "null";
+        }
         return new SimpleDateFormat("MMMM d, yyyy").format(this.movie.release_date);
     }
 
     public double getVoteAverage() {
+        if(this.movie.vote_average == null) {
+            return 0;
+        }
         return this.movie.vote_average;
     }
 
     public int getVoteCount() {
+        if(this.movie.vote_count == null) {
+            return 0;
+        }
         return this.movie.vote_count;
     }
 

@@ -10,28 +10,48 @@ xmlns:th="http://www.thymeleaf.org">
             content="width=device-width, initial-scale=1, user-scalable=yes">
     </head>
 
-    <body>
-        <div class="center" align="center">
-        <a th:href="${poster_path}" target="_blank">
-            <img th:src="@{${poster_path}}" th:alt="${movieTitle} + ' poster'"/>
-        </a>
-        <h1>
-            <p th:text="'Title: ' + ${movieTitle}" />
-        </h1>
-        <p th:text="'Overview: ' + ${movieOverview}" />
-        <p th:text="'Genres: ' + ${movieGenres}" /> <!-- FIX: Printing Genres -->
-        <p th:text="'Runtime: ' + ${movieRuntime} + ' minutes'" />
-        <p th:text="'Release Date: ' + ${movieReleaseDate}" />
-        <p th:text="'Vote Average: ' + ${movieVoteAverage} + '/10.0'" />
-        <p th:text="'Vote Count: ' + ${movieVoteCount} + ' votes'" />
-        <!-- <p th:href="${imdb_id}" th:text="'IMDB Link: ' + ${imdb_id}" /> -->
-        <p>
-            IMDB Link: <a th:href="${imdb_id}" target="_blank"><p th:text="${imdb_id}" /></a>
-        </p>
-        <!-- <p th:text="'Movie Recommendations: ' + ${movieRecommendations}" /> -->
-        <!-- <p th:text="'Movie Videos: ' + ${movieVideos}" /> -->
-
-        <input type="button"  onclick="location.href='/movies?name=disliked'" value="Dislike" >
-        <input type="button"  onclick="location.href='/movies?name=liked'" value="Like" >
+    <body class="center">
+        <link rel="stylesheet" href="test.css">
+        <div class="tbg">
+        <div class="theader">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+            <i class="fa fa-comments" aria-hidden="true"></i>
+            <div class="tlogo">
+                <img src="https://worldvectorlogo.com/logos/tinder-1.svg" alt="Tinder Logo" title="Tinder Logo" />
+            </div>
+        </div>
+        <div class="tbgwrap">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img th:src="@{${poster_path}}" th:alt="${movieTitle} + ' poster'"/>
+                  </div>
+                  <div class="flip-card-back">
+                    <h1><p th:text="'Title: ' + ${movieTitle}" /></h1>
+                    <p th:text="'Overview: ' + ${movieOverview}" />
+                    <p th:text="'Genres: ' + ${movieGenres}" /> <!-- FIX: Printing Genres -->
+                    <p th:text="'Runtime: ' + ${movieRuntime} + ' minutes'" />
+                    <p th:text="'Release Date: ' + ${movieReleaseDate}" />
+                    <p th:text="'Vote Average: ' + ${movieVoteAverage} + '/10.0'" />
+                    <p th:text="'Vote Count: ' + ${movieVoteCount} + ' votes'" />
+                    <p>
+                        IMDB Link: <a th:href="${imdb_id}" target="_blank"><p th:text="${imdb_id}" /></a>
+                    </p>
+                  </div>
+                </div>
+            </div>
+            <div class="tcontrols">
+                <a href="/movies?name=disliked">
+                    <div id="x"></div>
+                </a>
+                <a href="/movies?name=liked">
+                    <div id="heart"></div>
+                </a>
+                <!-- <input type="button"  onclick="location.href='/movies?name=disliked'" value="Dislike" >
+                <input type="button"  onclick="location.href='/movies?name=liked'" value="Like" > -->
+            </div>
+        </div>
+        <!-- <div class="credit"><a href="http://themakery.jcink.net">Created by Miami</a></div>
+        </div> -->
     </body>
 </html>

@@ -37,7 +37,7 @@ public class SpringtestApplication implements CommandLineRunner {
 		movie.setVoteCount(m.getVoteCount());
 		movie.setId(m.getIMDB_ID());
 		movieRepository.save(movie);
-		System.out.println("Added movie: (" + randomMovie + ") " + m.getTitle() + " to MongoDB\n");
+		System.out.println("Added \"" + m.getTitle() + "\" to MongoDB");
 	}
 
 	// @Bean

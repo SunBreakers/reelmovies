@@ -3,8 +3,8 @@ package com.example.springtest;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-// import java.util.List;
-// import com.uwetrottmann.tmdb2.entities.Genre;
+import java.util.List;
+import com.uwetrottmann.tmdb2.entities.Genre;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -28,7 +28,6 @@ public class MovieController {
         model.addAttribute("imdb_id", "https://www.imdb.com/title/" + m.getIMDB_ID() + "/");
         // model.addAttribute("movieRecommendations", parseMovies.movieRecommendations);
         // model.addAttribute("movieVideo", parseMovies.movieVideo);
-        System.out.println("Showing movie: (" + randomMovie + ") " + m.getTitle() + " on the /movies page\n");
 		return "movies";
 	}
 }

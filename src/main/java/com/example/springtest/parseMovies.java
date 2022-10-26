@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 @Controller
 public class parseMovies{
     private Movie movie = new Movie();
-    private static final String API_KEY = "5ae9bfda7c93c18a70125da1d0f9cb7d";
+    private final String API_KEY = "5ae9bfda7c93c18a70125da1d0f9cb7d";
     // private String movieRecommendations;
     // private String movieVideo;
 

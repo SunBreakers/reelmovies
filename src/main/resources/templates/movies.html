@@ -17,7 +17,12 @@ xmlns:th="http://www.thymeleaf.org">
             <i class="fa fa-cog" aria-hidden="true"></i>
             <i class="fa fa-comments" aria-hidden="true"></i>
             <div class="tlogo">
-                <img src="public\playground_assets\SunBreakers_Logo.png" alt="Tinder Logo" title="Tinder Logo" />
+                <a href="index.html">
+                    <img src="public\playground_assets\SunBreakers_Logo.png"
+                    alt="Tinder Logo"
+                    title="SunBreakers Logo"
+                    height="40" />
+                </a>
             </div>
         </div>
         <div class="tbgwrap">
@@ -42,10 +47,18 @@ xmlns:th="http://www.thymeleaf.org">
             </div>
             <div class="tcontrols">
                 <a href="/movies?name=disliked">
-                    <img src="public\playground_assets\red-x.png">
+                    <img src="public\playground_assets\red-x.png"
+                    alt="Dislike Button"
+                    width="90" 
+                    height="90"
+                    style="margin:20px;">
                 </a>
                 <a href="/movies?name=liked">
-                    <img src="public\playground_assets\green-heart.png">
+                    <img src="public\playground_assets\green-heart.png"
+                    alt="Like Button"
+                    width="100" 
+                    height="100"
+                    style="margin:20px;">
                 </a>
                 <!-- <input type="button"  onclick="location.href='/movies?name=disliked'" value="Dislike" >
                 <input type="button"  onclick="location.href='/movies?name=liked'" value="Like" > -->

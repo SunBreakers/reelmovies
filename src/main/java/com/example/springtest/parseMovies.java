@@ -65,6 +65,13 @@ public class parseMovies{
         this.movie.id = movie.id;
     }
 
+    public int getID() {
+        if(this.movie.id == null) {
+            return 0;
+        }
+        return this.movie.id;
+    }
+
     public String getPosterPath() {
         return this.movie.poster_path;
     }

@@ -21,6 +21,7 @@ public class SpringtestApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		// TODO: Do while this.movie.id == null
 		Movie movie = new Movie();
 		Random random = new Random();
         int randomMovie = random.nextInt(812104) + 1;

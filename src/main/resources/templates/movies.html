@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"
 xmlns:th="http://www.thymeleaf.org"
-style="background-color: rgb(230, 230, 230)">
+class="gray-background">
     <head>
         <!-- Using Bootstrap for CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="icon" href="public\playground_assets\movie-icon.png">
         <title>Movies</title>
         <meta charset="utf-8">
         <meta name="viewport"
@@ -48,18 +49,12 @@ style="background-color: rgb(230, 230, 230)">
             </div>
             <div class="tcontrols">
                 <a href="/movies?name=disliked">
-                    <img src="public\playground_assets\red-x.png"
-                    alt="Dislike Button"
-                    width="90" 
-                    height="90"
-                    style="margin:20px;">
+                    <img src="public\playground_assets\red-x.png" class="button"
+                    alt="Dislike Button">
                 </a>
                 <a href="/movies?name=liked">
-                    <img src="public\playground_assets\green-heart.png"
-                    alt="Like Button"
-                    width="100" 
-                    height="100"
-                    style="margin:20px;">
+                    <img src="public\playground_assets\green-heart.png" class="button"
+                    alt="Like Button">
                 </a>
                 <!-- <input type="button"  onclick="location.href='/movies?name=disliked'" value="Dislike" >
                 <input type="button"  onclick="location.href='/movies?name=liked'" value="Like" > -->

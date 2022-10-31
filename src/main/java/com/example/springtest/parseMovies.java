@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
 import com.uwetrottmann.tmdb2.Tmdb;
@@ -18,9 +19,15 @@ import java.text.SimpleDateFormat;
 @Controller
 public class parseMovies{
     private Movie movie = new Movie();
-    private static final String API_KEY = "5ae9bfda7c93c18a70125da1d0f9cb7d";
+    private static String API_KEY;
     // private String movieRecommendations;
     // private String movieVideo;
+
+    // Hide API Key by getting it from application.properties
+    @Value("${TMDB_API_Key}")
+    public void setMyProperty(String myValue) {
+        this.API_KEY = myValue;
+    }
 
     // https://www.themoviedb.org/documentation/api
     // https://github.com/UweTrottmann/tmdb-java
@@ -29,7 +36,7 @@ public class parseMovies{
         Random random = new Random();
         int randomMovie = movieID;
 
-        Tmdb tmdb = new Tmdb(API_KEY); // Insert TheMovieDatabase API Key Here
+        Tmdb tmdb = new Tmdb(API_KEY);
         MoviesService moviesService = tmdb.moviesService(); 
         try 
         {

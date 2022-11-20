@@ -47,7 +47,8 @@ public class parseMovies{
             {
                 this.movie = response.body();
                 System.out.println("Testing movie: (" + randomMovie + ") " + this.movie.title);
-                while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null || this.movie.imdb_id == null || this.movie.runtime == null || this.movie.release_date == null || this.movie.genres == null) // prevents null, adult movies or movies without posters from showing
+                // this.movie.popularity < 1
+                while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null || this.movie.imdb_id == null || this.movie.runtime == null || this.movie.release_date == null || this.movie.genres == null || !this.movie.original_language.contains("en")) // prevents null, adult movies or movies without posters from showing
                 {
                     randomMovie = random.nextInt(812104) + 1;
                     response = moviesService

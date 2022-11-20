@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 public class parseMovies{
     private Movie movie = new Movie();
     private static String API_KEY;
+    static int totalMoviesTested = 0;
     // private String movieRecommendations;
     // private String movieVideo;
 
@@ -43,6 +44,7 @@ public class parseMovies{
             retrofit2.Response<Movie> response = moviesService
                 .summary(randomMovie, "") // 550 = Fight Club
                 .execute();
+            totalMoviesTested++;
             if (response.isSuccessful()) 
             {
                 this.movie = response.body();
@@ -54,7 +56,8 @@ public class parseMovies{
                     response = moviesService
                         .summary(randomMovie, "")
                         .execute();
-                        this.movie = response.body();
+                    totalMoviesTested++;
+                    this.movie = response.body();
                     if(movie != null)
                     {
                         System.out.println("Testing movie: (" + randomMovie + ") " + this.movie.title);
@@ -109,11 +112,32 @@ public class parseMovies{
         return genreList;
     }
 
-    public int getRuntime() {
+    public String getRuntime() {
         if(this.movie.runtime == null) {
-            return 0;
+            return "";
         }
-        return this.movie.runtime;
+        int hours = this.movie.runtime / 60;
+        int minutes = this.movie.runtime % 60;
+        StringBuilder runtimeStringBuilder = new StringBuilder();
+        if(hours > 0)
+            runtimeStringBuilder.append(hours);
+        if(hours > 1)
+        {
+            runtimeStringBuilder.append(" hours");
+            runtimeStringBuilder.append(" and ");
+        }
+        else if(hours == 1)
+        {
+            runtimeStringBuilder.append(" hour");
+            runtimeStringBuilder.append(" and ");
+        }
+        if(minutes > 0)
+            runtimeStringBuilder.append(minutes);
+        if(minutes > 1)
+            runtimeStringBuilder.append(" minutes");
+        else if(minutes == 1)
+            runtimeStringBuilder.append(" minute");
+        return runtimeStringBuilder.toString();
     }
 
     public String getReleaseDate() {

@@ -25,13 +25,13 @@ public class Movie {
     private String title;
     private String overview;
     private String genres;
-    private int runtime;
+    private String runtime;
     private String releaseDate;
     private double voteAverage;
     private int voteCount;
     private String imdb_id;
 
-    public Movie(String posterPath, String title, String overview, String genres, int runtime, String releaseDate, double voteAverage, int voteCount, String imdb_id) {
+    public Movie(String posterPath, String title, String overview, String genres, String runtime, String releaseDate, double voteAverage, int voteCount, String imdb_id) {
         this.posterPath =  posterPath;
         this.title = title;
         this.overview = overview;

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Build a Survey Form using HTML and CSS
+  </title>
+
+  <style>
+    /* Styling the Body element i.e. Color,
+		Font, Alignment */
+    body {
+      background-color: #c46105;
+      font-family: Verdana;
+      text-align: center;
+    }
+
+    .required-field::before {
+      content: "*";
+      color: red;
+    }
+
+    /* Styling the Form (Color, Padding, Shadow) */
+    form {
+      background-color: #fff;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px 20px;
+      box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Styling form-control Class */
+    .form-control {
+      text-align: left;
+      margin-bottom: 25px;
+    }
+
+    /* Styling form-control Label */
+    .form-control label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Styling form-control input,
+		select, textarea */
+    .form-control input,
+    .form-control select,
+    .form-control textarea {
+      border: 1px solid #777;
+      border-radius: 2px;
+      font-family: inherit;
+      padding: 10px;
+      display: block;
+      width: 95%;
+    }
+
+    /* Styling form-control Radio
+		button and Checkbox */
+    .form-control input[type="radio"],
+    .form-control input[type="checkbox"] {
+      display: inline-block;
+      width: auto;
+    }
+
+    /* Styling Button */
+    button {
+      background-color: #c46105;
+      border: 1px solid #777;
+      border-radius: 2px;
+      font-family: inherit;
+      font-size: 21px;
+      display: block;
+      width: 100%;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ReelMovies Questionnaire</h1>
+
+  <!-- Create Form -->
+  <form id="form">
+
+    <!-- Details -->
+    <div class="form-control">
+      <label for="age" id="label-age">
+        Age<span class="required-field"></span>
+      </label>
+
+      <!-- Input Type Text -->
+      <input type="text" id="age" placeholder="Enter your age" />
+    </div>
+    <div class="form-control">
+      <label for="Actor" id="label-age">
+        Favorite Actor
+      </label>
+
+      <!-- Input Type Text -->
+      <input type="text" id="actor" placeholder="Enter your favorite actor (optional)" />
+    </div>
+
+    <div class="form-control">
+      <label for="FavMovie" id="label-age">
+        Favorite Movie
+      </label>
+
+      <!-- Input Type Text -->
+      <input type="text" id="FavMovie" placeholder="Enter your favorite movie (use the full title)" />
+    </div>
+
+    <div class="form-control">
+      <label>Streaming Services
+        <small>(Check all that apply)</small>
+      </label>
+      <!-- Input Type Checkbox -->
+      <label for="inp-1">
+        <input type="checkbox" name="inp">Netflix</input></label>
+      <label for="inp-2">
+        <input type="checkbox" name="inp">Disney+</input></label>
+      <label for="inp-3">
+        <input type="checkbox" name="inp">Hulu</input></label>
+      <label for="inp-4">
+        <input type="checkbox" name="inp">Amazon Prime Video</input></label>
+      <label for="inp-5">
+        <input type="checkbox" name="inp">HBO Max</input></label>
+      <label for="inp-6">
+        <input type="checkbox" name="inp">Peacock</input></label>
+      <label for="inp-7">
+        <input type="checkbox" name="inp">Paramount+</input></label>
+      <label for="inp-7">
+    </div>
+
+    <div class="form-control">
+      <label>Favorite Generes
+        <small>(Check all that apply)</small>
+      </label>
+      <!-- Input Type Checkbox -->
+      <label for="inp-1">
+        <input type="checkbox" name="inp">Action</input></label>
+      <label for="inp-2">
+        <input type="checkbox" name="inp">Comedy</input></label>
+      <label for="inp-3">
+        <input type="checkbox" name="inp">Horror</input></label>
+      <label for="inp-4">
+        <input type="checkbox" name="inp">Drama</input></label>
+      <label for="inp-5">
+        <input type="checkbox" name="inp">Thriller</input></label>
+      <label for="inp-6">
+        <input type="checkbox" name="inp">Adventure</input></label>
+      <label for="inp-7">
+        <input type="checkbox" name="inp">Fantasy</input></label>
+      <label for="inp-8">
+        <input type="checkbox" name="inp">Science Fiction</input></label>
+      <label for="inp-9">
+        <input type="checkbox" name="inp">History</input></label>
+      <label for="inp-10">
+        <input type="checkbox" name="inp">Animated</input></label>
+    </div>
+
+    <!-- Multi-line Text Input Control -->
+    <button type="submit" value="submit">
+      Submit
+    </button>
+  </form>
+</body>
+</html>

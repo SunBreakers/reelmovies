@@ -44,6 +44,12 @@ public class parseMovies{
             retrofit2.Response<Movie> response = moviesService
                 .summary(randomMovie, "") // 550 = Fight Club
                 .execute();
+            while(!response.isSuccessful()) {
+                randomMovie = random.nextInt(812104) + 1;
+                response = moviesService
+                .summary(randomMovie, "") // 550 = Fight Club
+                .execute();
+            }
             totalMoviesTested++;
             if (response.isSuccessful()) 
             {

@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OAuth2 Cognito Demo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Reel Movies</title>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+        <link rel="icon" href="public/playground_assets/movie-icon.png">
     </head>
 
     <body>
@@ -28,7 +29,10 @@
                                 Cognito</a>
                         </div>
                     </div>
-                    <a th:href="@{https://springtest.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=http://localhost:8080/logout}" class="btn btn-primary">Logout</a>
+                    <a th:href="@{https://reelmovies.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=reelmovies:80/logout}" class="btn btn-primary">Logout</a>
+                    <!-- <a th:href="@{https://reelmovies.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=reelmovies:8080/logout}" class="btn btn-primary">Logout</a> -->
+                    <!-- <a th:href="@{https://reelmovies.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=http://localhost:8080/logout}" class="btn btn-primary">Logout</a> -->
+                    <!-- <a th:href="@{https://reelmovies.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=http://localhost/logout}" class="btn btn-primary">Logout</a> -->
                 </div>
             </div>
         </section>

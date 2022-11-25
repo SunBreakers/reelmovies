@@ -1,59 +1,50 @@
 package com.example.springtest;
 
-import java.io.IOException;
+import java.util.Random;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class WebController {
-	// Julian Rowe
-	@GetMapping("/jsoup")
-	public String getMovies(@RequestParam(name="jsoup", required=false) String jsoup, Model model) {
-		model.addAttribute("jsoup", jsoup);
-		return parseMovies.jsoupParse();
-	}
+@Controller
+public class WebController implements WebMvcConfigurer {
+	
+	@GetMapping("/movies")
+	public String movies(@RequestParam(name="liked", required=false)String movies, Model model) {
+        Random random = new Random();
+        int randomMovie = random.nextInt(812104) + 1;
+        parseMovies m = new parseMovies();
+        m.setMovie(randomMovie);
 
-	@GetMapping("/predicate")
-	public String getICE(@RequestParam(name="predicate", required=false) String predicate, Model model) {
-		model.addAttribute("predicate", predicate);
-		return PredicateEx.getICE();
-	}
-	
-	//Duc Thanh Nguyen
-	 @GetMapping("/hi")
-	 public String hi(@RequestParam(value = "name", defaultValue = "a good day!!!") String name) {
-	 	return String.format("Haveeeeee %s!", name);
-	 }
-	
-	//Noe Rivera
-	@GetMapping("/aboutus")
-	public String aboutus(@RequestParam(value = "name", defaultValue = "get to know our team!") String name) 
-	{
-		return String.format("Welcome future SunBreaker, %s!", name);
+        model.addAttribute("poster_path", "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + m.getPosterPath());
+        model.addAttribute("movieTitle", m.getTitle());
+        model.addAttribute("movieOverview", m.getOverview());
+        model.addAttribute("movieGenres", m.getGenres());
+        model.addAttribute("movieRuntime", m.getRuntime());
+        model.addAttribute("movieReleaseDate", m.getReleaseDate());
+        model.addAttribute("movieVoteAverage", m.getVoteAverage());
+        model.addAttribute("movieVoteCount", m.getVoteCount());
+        model.addAttribute("imdb_id", "https://www.imdb.com/title/" + m.getIMDB_ID() + "/");
+        // model.addAttribute("movieRecommendations", parseMovies.movieRecommendations);
+        // model.addAttribute("movieVideo", parseMovies.movieVideo);
+        System.out.println("Total movies tested: " + parseMovies.totalMoviesTested);
+        System.out.println("Showing movie: (" + m.getID() + ") " + m.getTitle() + " on the /movies page\n");
+		return "movies";
 	}
 
-	//Ryan Mercado
-	@GetMapping("/RandomNumber")
-	public double RandomNumber() 
-	{
-		return RanNum.calculate();
-	}
-	/* @GetMapping("/case")
-	public String getCasing(@RequestParam(name="casing", required=false) String casing, Model model) throws IOException {
-		return commonsIOEX.getCase();
-	} */
-	
-	//Tyler Kloss
-	@GetMapping("/howdy")
-	public String howdy(@RequestParam(value = "name", defaultValue = "Partner") String name) {
-		return String.format("Howdy %s!", name);
-	}
-	@GetMapping("/test")
-	public String getTest(@RequestParam(name="test", required=false) String test, Model model) {
-		model.addAttribute("test", test);
-		return clojureTest.clojure();
-	}
+    @RequestMapping("/AmazonCognito")
+    public ModelAndView AmazonCognito () {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("logout.html");
+        return modelAndView;
+    }
+
+    // @Override
+    // public void addViewControllers(ViewControllerRegistry registry) {
+    //     registry.addViewController("/").setViewName("home");
+    // }
 }

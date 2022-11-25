@@ -45,10 +45,11 @@ public class parseMovies{
                 .summary(randomMovie, "") // 550 = Fight Club
                 .execute();
             while(!response.isSuccessful()) {
+                System.out.println("Response from API not successful trying again");
                 randomMovie = random.nextInt(812104) + 1;
                 response = moviesService
-                .summary(randomMovie, "") // 550 = Fight Club
-                .execute();
+                    .summary(randomMovie, "")
+                    .execute();
             }
             totalMoviesTested++;
             if (response.isSuccessful()) 

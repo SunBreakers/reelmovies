@@ -1,4 +1,4 @@
-package com.example.springtest;
+package com.example.reelmovies;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,11 +21,10 @@ public class SpringtestApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO: Do while this.movie.id == null
 		Movie movie = new Movie();
 		Random random = new Random();
         int randomMovie = random.nextInt(812104) + 1;
-        parseMovies m = new parseMovies();
+        ParseMovies m = new ParseMovies();
         m.setMovie(randomMovie);
 
 		movie.setPosterPath(m.getPosterPath());

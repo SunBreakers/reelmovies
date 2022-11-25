@@ -1,14 +1,16 @@
-package com.example.springtest;
+package com.example.reelmovies;
 
 import org.junit.*;
 
-public class parseMoviesTest {
-    private parseMovies m;
+import com.example.reelmovies.ParseMovies;
+
+public class ParseMoviesTest {
+    private ParseMovies m;
 
     @Before
     public void setup() {
         System.out.println("before testing ...");
-        m = new parseMovies();
+        m = new ParseMovies();
     }
 
     @After
@@ -33,7 +35,7 @@ public class parseMoviesTest {
     //Duc Thanh Nguyen
     @Test
     public void testIMDB_ID(){
-        parseMovies m = new parseMovies();
+        ParseMovies m = new ParseMovies();
         m.setMovie(550);
         String testIMDB = m.getIMDB_ID();
         Assert.assertNotNull(testIMDB);
@@ -50,7 +52,7 @@ public class parseMoviesTest {
     // Tyler Kloss
     @Test
     public void testParseMoviePoster() {
-        m = new parseMovies();
+        m = new ParseMovies();
         m.setMovie(550);
         String testPoster = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + m.getPosterPath();
         Assert.assertEquals("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg", testPoster);

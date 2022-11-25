@@ -1,4 +1,4 @@
-package com.example.springtest;
+package com.example.reelmovies;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

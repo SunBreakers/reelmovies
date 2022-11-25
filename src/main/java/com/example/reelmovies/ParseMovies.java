@@ -1,9 +1,9 @@
-package com.example.springtest;
+package com.example.reelmovies;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+// import org.jsoup.Jsoup;
+// import org.jsoup.nodes.Document;
+// import org.jsoup.nodes.Element;
+// import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
@@ -12,12 +12,12 @@ import com.uwetrottmann.tmdb2.entities.Movie;
 import com.uwetrottmann.tmdb2.entities.Genre;
 import com.uwetrottmann.tmdb2.services.MoviesService;
 
+// import java.io.IOException;
 import java.util.Random;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 @Controller
-public class parseMovies{
+public class ParseMovies {
     private Movie movie = new Movie();
     private static String API_KEY;
     static int totalMoviesTested = 0;
@@ -172,25 +172,25 @@ public class parseMovies{
         return this.movie.imdb_id;
     }
 
-    public static String jsoupParse(){
-        StringBuilder str = new StringBuilder();
-        try{
-            Document doc = Jsoup.connect("https://www.google.com").get();
+    // public static String jsoupParse(){
+    //     StringBuilder str = new StringBuilder();
+    //     try{
+    //         Document doc = Jsoup.connect("https://www.google.com").get();
 
-            // get page title
-            String title = doc.title();
-            str.append("title : " + title);
+    //         // get page title
+    //         String title = doc.title();
+    //         str.append("title : " + title);
 
-            // get all links
-            Elements links = doc.select("a[href]");
-            for (Element link : links) {
-                str.append("<br>link : " + link.attr("href"));
-                str.append("<br>text : " + link.text());
-            }
+    //         // get all links
+    //         Elements links = doc.select("a[href]");
+    //         for (Element link : links) {
+    //             str.append("<br>link : " + link.attr("href"));
+    //             str.append("<br>text : " + link.text());
+    //         }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return str.toString();
-    }
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
+    //     return str.toString();
+    // }
 }

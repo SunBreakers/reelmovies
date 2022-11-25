@@ -1,4 +1,4 @@
-package com.example.springtest;
+package com.example.reelmovies;
 
 // import com.example.springtest.Movie;
 import org.springframework.data.mongodb.repository.MongoRepository;

@@ -1,4 +1,4 @@
-package com.example.springtest;
+package com.example.reelmovies;
 
 import java.util.Random;
 
@@ -17,7 +17,7 @@ public class WebController implements WebMvcConfigurer {
 	public String movies(@RequestParam(name="liked", required=false)String movies, Model model) {
         Random random = new Random();
         int randomMovie = random.nextInt(812104) + 1;
-        parseMovies m = new parseMovies();
+        ParseMovies m = new ParseMovies();
         m.setMovie(randomMovie);
 
         model.addAttribute("poster_path", "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + m.getPosterPath());
@@ -31,7 +31,7 @@ public class WebController implements WebMvcConfigurer {
         model.addAttribute("imdb_id", "https://www.imdb.com/title/" + m.getIMDB_ID() + "/");
         // model.addAttribute("movieRecommendations", parseMovies.movieRecommendations);
         // model.addAttribute("movieVideo", parseMovies.movieVideo);
-        System.out.println("Total movies tested: " + parseMovies.totalMoviesTested);
+        System.out.println("Total movies tested: " + ParseMovies.totalMoviesTested);
         System.out.println("Showing movie: (" + m.getID() + ") " + m.getTitle() + " on the /movies page\n");
 		return "movies";
 	}

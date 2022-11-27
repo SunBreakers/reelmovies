@@ -1,5 +1,7 @@
 package com.example.reelmovies;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.stereotype.Controller;
@@ -15,10 +17,12 @@ public class WebController implements WebMvcConfigurer {
 	
 	@GetMapping("/movies")
 	public String movies(@RequestParam(name="liked", required=false)String movies, Model model) {
-        Random random = new Random();
-        int randomMovie = random.nextInt(812104) + 1;
         ParseMovies m = new ParseMovies();
-        m.setMovie(randomMovie);
+        
+        String getHtmlString = m.getHTML(m.getURLToRead());
+        List<Integer> listOfMovieIDs = m.getMovieID(getHtmlString);
+        int getRandomMovieIDFromDiscover = m.getRandomMovieIDFromDiscover(listOfMovieIDs);
+        m.setMovie(getRandomMovieIDFromDiscover);
 
         model.addAttribute("poster_path", "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + m.getPosterPath());
         model.addAttribute("movieTitle", m.getTitle());

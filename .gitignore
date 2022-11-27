@@ -36,4 +36,5 @@ build/
 application.properties
 
 ### JKS file for https ###
-https-reelmovies.jks
+*.jks
+*.crt

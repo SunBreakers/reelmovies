@@ -4,7 +4,6 @@ package com.example.reelmovies;
 // import org.jsoup.nodes.Document;
 // import org.jsoup.nodes.Element;
 // import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
 import com.uwetrottmann.tmdb2.Tmdb;
@@ -13,34 +12,23 @@ import com.uwetrottmann.tmdb2.entities.Genre;
 import com.uwetrottmann.tmdb2.services.MoviesService;
 
 // import java.io.IOException;
-import java.util.Random;
 import java.text.SimpleDateFormat;
-import java.io.*;
-import java.net.*;
 import java.util.*;
 
 @Controller
 public class ParseMovies {
     private Movie movie = new Movie();
-    private static String API_KEY;
     static int totalMoviesTested = 0;
     // private String movieRecommendations;
     // private String movieVideo;
-
-    // Hide API Key by getting it from application.properties
-    @Value("${TMDB_API_Key}")
-    public void setMyProperty(String myValue) {
-        this.API_KEY = myValue;
-    }
 
     // https://www.themoviedb.org/documentation/api
     // https://github.com/UweTrottmann/tmdb-java
     public void getMoviesFromAPI(int movieID)
     {
-        Random random = new Random();
         int randomMovie = movieID;
 
-        Tmdb tmdb = new Tmdb(API_KEY);
+        Tmdb tmdb = new Tmdb(ApiGetMethod.API_KEY);
         MoviesService moviesService = tmdb.moviesService(); 
         try 
         {
@@ -50,9 +38,9 @@ public class ParseMovies {
             while(!response.isSuccessful()) {
                 System.out.println("Response from API not successful trying again");
                 // randomMovie = random.nextInt(812104) + 1;
-                String getHtmlString = getHTML(getURLToRead());
-                List<Integer> listOfMovieIDs = getMovieID(getHtmlString);
-                int getRandomMovieIDFromDiscover = getRandomMovieIDFromDiscover(listOfMovieIDs);
+                String getHtmlString = ApiGetMethod.getHTML(ApiGetMethod.getURLToRead());
+                List<Integer> listOfMovieIDs = ApiGetMethod.getMovieID(getHtmlString);
+                int getRandomMovieIDFromDiscover = ApiGetMethod.getRandomMovieIDFromDiscover(listOfMovieIDs);
                 randomMovie = getRandomMovieIDFromDiscover;
                 response = moviesService
                     .summary(randomMovie, "")
@@ -67,9 +55,9 @@ public class ParseMovies {
                 while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null || this.movie.imdb_id == null || this.movie.runtime == null || this.movie.release_date == null || this.movie.genres == null || !this.movie.original_language.contains("en")) // prevents null, adult movies or movies without posters from showing
                 {
                     // randomMovie = random.nextInt(812104) + 1;
-                    String getHtmlString = getHTML(getURLToRead());
-                    List<Integer> listOfMovieIDs = getMovieID(getHtmlString);
-                    int getRandomMovieIDFromDiscover = getRandomMovieIDFromDiscover(listOfMovieIDs);
+                    String getHtmlString = ApiGetMethod.getHTML(ApiGetMethod.getURLToRead());
+                    List<Integer> listOfMovieIDs = ApiGetMethod.getMovieID(getHtmlString);
+                    int getRandomMovieIDFromDiscover = ApiGetMethod.getRandomMovieIDFromDiscover(listOfMovieIDs);
                     randomMovie = getRandomMovieIDFromDiscover;
                     response = moviesService
                         .summary(randomMovie, "")
@@ -87,85 +75,6 @@ public class ParseMovies {
         {
             System.out.println("Exception: " + e);
         }
-    }
-
-    public static String getURLToRead()
-    {
-        Random rand = new Random();
-        StringBuilder urlStringBuilder = new StringBuilder();
-        urlStringBuilder.append("https://api.themoviedb.org/3/discover/movie?api_key=");
-        urlStringBuilder.append(API_KEY);
-        urlStringBuilder.append("&language=en&sort_by=popularity.desc&include_adult=false&include_video=false");
-        urlStringBuilder.append("&page=");
-        urlStringBuilder.append(rand.nextInt(9)+1);
-        urlStringBuilder.append("&with_watch_monetization_types=flatrate");
-        return urlStringBuilder.toString();
-    }
-
-    public static String getHTML(String urlToRead)
-    {
-        try
-        {
-            StringBuilder result = new StringBuilder();
-            URL url = new URL(urlToRead);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()))) 
-            {
-                for (String line; (line = reader.readLine()) != null; ) 
-                {
-                    result.append(line);
-                }
-            }
-            // System.out.println("index of id" + result.indexOf("\"id\":") + "\n");
-            return result.toString();
-        } catch(Exception e) {
-            e.printStackTrace();
-            return "";
-        }
-    }
-
-    public static List<Integer> getMovieID(String getHtmlString) 
-    {
-        try
-        {
-            List<Integer> listOfMovieIDs = new ArrayList<Integer>();
-            String movieIDAsString = "";
-    
-            for(int i = 0; i < getHtmlString.length()-5; i++) 
-            {
-                movieIDAsString = "";
-                String testForID = getHtmlString.substring(i, i+5);
-                // Checks if substring equals "id\":
-                if(testForID.equals("\"id\":")) 
-                {
-                    for(int j = 0; j < 6; j++) 
-                    {
-                        // Checks if ASCII value of char after substring is an int
-                        if((int)getHtmlString.charAt(i+5+j) >= 48 && (int)getHtmlString.charAt(i+5+j) <= 57) 
-                        {
-                            movieIDAsString += getHtmlString.charAt(i+5+j);
-                            // System.out.println(movieIDAsString);
-                        }
-                    }
-                    // Converts string to int and then adds to the List
-                    int stringToInt = Integer.parseInt(movieIDAsString);
-                    listOfMovieIDs.add(stringToInt);
-                    // System.out.println(listOfMovieIDs);
-                }
-            }
-            return listOfMovieIDs;
-        } catch(Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static int getRandomMovieIDFromDiscover(List<Integer> listOfMovieIDs)
-    {
-        Random rand = new Random();
-        int randomMovieIDFromDiscover = listOfMovieIDs.get(rand.nextInt(listOfMovieIDs.size()));
-        return randomMovieIDFromDiscover;
     }
 
     public void setMovie(int newMovie) {

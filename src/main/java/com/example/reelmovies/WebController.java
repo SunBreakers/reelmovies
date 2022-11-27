@@ -1,8 +1,8 @@
 package com.example.reelmovies;
 
-import java.io.IOException;
+// import java.io.IOException;
+// import java.util.Random;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +19,9 @@ public class WebController implements WebMvcConfigurer {
 	public String movies(@RequestParam(name="liked", required=false)String movies, Model model) {
         ParseMovies m = new ParseMovies();
         
-        String getHtmlString = m.getHTML(m.getURLToRead());
-        List<Integer> listOfMovieIDs = m.getMovieID(getHtmlString);
-        int getRandomMovieIDFromDiscover = m.getRandomMovieIDFromDiscover(listOfMovieIDs);
+        String getHtmlString = ApiGetMethod.getHTML(ApiGetMethod.getURLToRead());
+        List<Integer> listOfMovieIDs = ApiGetMethod.getMovieID(getHtmlString);
+        int getRandomMovieIDFromDiscover = ApiGetMethod.getRandomMovieIDFromDiscover(listOfMovieIDs);
         m.setMovie(getRandomMovieIDFromDiscover);
 
         model.addAttribute("poster_path", "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + m.getPosterPath());

@@ -34,6 +34,17 @@ public class ApiGetMethod
         return urlStringBuilder.toString();
     }
 
+    public static String getURLToRead2() //Popular method
+    {
+        Random rand = new Random();
+        StringBuilder urlStringBuilder = new StringBuilder();
+        urlStringBuilder.append("https://api.themoviedb.org/3/movie/popular?api_key=");
+        urlStringBuilder.append(API_KEY);
+        urlStringBuilder.append("&language=en-US&page=");
+        urlStringBuilder.append(rand.nextInt(9)+1);
+        return urlStringBuilder.toString();
+    }
+
     public static String getHTML(String urlToRead)
     {
         try

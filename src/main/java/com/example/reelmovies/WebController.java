@@ -1,28 +1,24 @@
 package com.example.reelmovies;
 
-// import java.io.IOException;
-// import java.util.Random;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class WebController implements WebMvcConfigurer {
+public class WebController implements WebMvcConfigurer 
+{
 	
 	@GetMapping("/movies")
-	public String movies(@RequestParam(name="liked", required=false)String movies, Model model) {
+	public String movies(@RequestParam(name="liked", required=false)String movies, Model model) 
+    {
         ParseMovies m = new ParseMovies();
         
-        String getHtmlString = ApiGetMethod.getHTML(ApiGetMethod.getURLToRead());
-        List<Integer> listOfMovieIDs = ApiGetMethod.getMovieID(getHtmlString);
-        int getRandomMovieIDFromDiscover = ApiGetMethod.getRandomMovieIDFromDiscover(listOfMovieIDs);
-        m.setMovie(getRandomMovieIDFromDiscover);
+        int randomMovieFromDiscover = ApiGetMethod.getMovieFromDiscover();
+        m.setMovie(randomMovieFromDiscover);
 
         model.addAttribute("poster_path", "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + m.getPosterPath());
         model.addAttribute("movieTitle", m.getTitle());
@@ -41,14 +37,16 @@ public class WebController implements WebMvcConfigurer {
 	}
 
     @RequestMapping("/AmazonCognito")
-    public ModelAndView AmazonCognito () {
+    public ModelAndView AmazonCognito () 
+    {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("logout.html");
         return modelAndView;
     }
 
     // @Override
-    // public void addViewControllers(ViewControllerRegistry registry) {
+    // public void addViewControllers(ViewControllerRegistry registry) 
+    // {
     //     registry.addViewController("/").setViewName("home");
     // }
 }

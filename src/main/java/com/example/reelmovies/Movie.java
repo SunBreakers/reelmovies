@@ -1,16 +1,14 @@
 package com.example.reelmovies;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-// import java.util.List;
 // import com.uwetrottmann.tmdb2.entities.Genre;
-
+// import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document(collection = "parseMovies")
@@ -18,7 +16,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Movie {
+public class Movie 
+{
     @Id
     private String id;
     private String posterPath;
@@ -31,7 +30,8 @@ public class Movie {
     private int voteCount;
     private String imdb_id;
 
-    public Movie(String posterPath, String title, String overview, String genres, String runtime, String releaseDate, double voteAverage, int voteCount, String imdb_id) {
+    public Movie(String posterPath, String title, String overview, String genres, String runtime, String releaseDate, double voteAverage, int voteCount, String imdb_id) 
+    {
         this.posterPath =  posterPath;
         this.title = title;
         this.overview = overview;

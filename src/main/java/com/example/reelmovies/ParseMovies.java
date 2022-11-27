@@ -1,22 +1,20 @@
 package com.example.reelmovies;
 
+import com.uwetrottmann.tmdb2.entities.Genre;
+import com.uwetrottmann.tmdb2.entities.Movie;
+import com.uwetrottmann.tmdb2.services.MoviesService;
+import com.uwetrottmann.tmdb2.Tmdb;
+// import java.io.IOException;
+import java.text.SimpleDateFormat;
 // import org.jsoup.Jsoup;
 // import org.jsoup.nodes.Document;
 // import org.jsoup.nodes.Element;
 // import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 
-import com.uwetrottmann.tmdb2.Tmdb;
-import com.uwetrottmann.tmdb2.entities.Movie;
-import com.uwetrottmann.tmdb2.entities.Genre;
-import com.uwetrottmann.tmdb2.services.MoviesService;
-
-// import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
 @Controller
-public class ParseMovies {
+public class ParseMovies 
+{
     private Movie movie = new Movie();
     static int totalMoviesTested = 0;
     // private String movieRecommendations;
@@ -35,13 +33,11 @@ public class ParseMovies {
             retrofit2.Response<Movie> response = moviesService
                 .summary(randomMovie, "") // 550 = Fight Club
                 .execute();
-            while(!response.isSuccessful()) {
+            while(!response.isSuccessful()) 
+            {
                 System.out.println("Response from API not successful trying again");
                 // randomMovie = random.nextInt(812104) + 1;
-                String getHtmlString = ApiGetMethod.getHTML(ApiGetMethod.getURLToRead());
-                List<Integer> listOfMovieIDs = ApiGetMethod.getMovieID(getHtmlString);
-                int getRandomMovieIDFromDiscover = ApiGetMethod.getRandomMovieIDFromDiscover(listOfMovieIDs);
-                randomMovie = getRandomMovieIDFromDiscover;
+                randomMovie = ApiGetMethod.getMovieFromDiscover();
                 response = moviesService
                     .summary(randomMovie, "")
                     .execute();
@@ -55,10 +51,7 @@ public class ParseMovies {
                 while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null || this.movie.imdb_id == null || this.movie.runtime == null || this.movie.release_date == null || this.movie.genres == null || !this.movie.original_language.contains("en")) // prevents null, adult movies or movies without posters from showing
                 {
                     // randomMovie = random.nextInt(812104) + 1;
-                    String getHtmlString = ApiGetMethod.getHTML(ApiGetMethod.getURLToRead());
-                    List<Integer> listOfMovieIDs = ApiGetMethod.getMovieID(getHtmlString);
-                    int getRandomMovieIDFromDiscover = ApiGetMethod.getRandomMovieIDFromDiscover(listOfMovieIDs);
-                    randomMovie = getRandomMovieIDFromDiscover;
+                    randomMovie = ApiGetMethod.getMovieFromDiscover();
                     response = moviesService
                         .summary(randomMovie, "")
                         .execute();
@@ -77,40 +70,51 @@ public class ParseMovies {
         }
     }
 
-    public void setMovie(int newMovie) {
+    public void setMovie(int newMovie) 
+    {
         getMoviesFromAPI(newMovie);
         this.movie.id = movie.id;
     }
 
-    public int getID() {
-        if(this.movie.id == null) {
+    public int getID() 
+    {
+        if(this.movie.id == null) 
+        {
             return 0;
         }
         return this.movie.id;
     }
 
-    public String getPosterPath() {
+    public String getPosterPath() 
+    {
         return this.movie.poster_path;
     }
 
-    public String getTitle() {
+    public String getTitle() 
+    {
         return this.movie.title;
     }
 
-    public String getOverview() {
+    public String getOverview() 
+    {
         return this.movie.overview;
     }
 
-    public String getGenres() {
-        if(this.movie.genres == null) {
+    public String getGenres() 
+    {
+        if(this.movie.genres == null) 
+        {
             return null;
         }
         String genreList = "";
-        for (Genre genre : this.movie.genres) {
-            if (genreList == "") {
+        for (Genre genre : this.movie.genres) 
+        {
+            if (genreList == "") 
+            {
                 genreList = genreList + genre.name;
             }
-            else {
+            else 
+            {
                 genreList = genreList + ", " + genre.name;
             }
         }
@@ -118,8 +122,10 @@ public class ParseMovies {
         return genreList;
     }
 
-    public String getRuntime() {
-        if(this.movie.runtime == null) {
+    public String getRuntime() 
+    {
+        if(this.movie.runtime == null) 
+        {
             return "";
         }
         int hours = this.movie.runtime / 60;
@@ -147,33 +153,41 @@ public class ParseMovies {
     }
 
     public String getReleaseDate() {
-        if(this.movie.release_date == null) {
+        if(this.movie.release_date == null) 
+        {
             return "null";
         }
         return new SimpleDateFormat("MMMM d, yyyy").format(this.movie.release_date);
     }
 
-    public double getVoteAverage() {
-        if(this.movie.vote_average == null) {
+    public double getVoteAverage() 
+    {
+        if(this.movie.vote_average == null) 
+        {
             return 0;
         }
         return this.movie.vote_average;
     }
 
-    public int getVoteCount() {
-        if(this.movie.vote_count == null) {
+    public int getVoteCount() 
+    {
+        if(this.movie.vote_count == null)
+        {
             return 0;
         }
         return this.movie.vote_count;
     }
 
-    public String getIMDB_ID() {
+    public String getIMDB_ID() 
+    {
         return this.movie.imdb_id;
     }
 
-    // public static String jsoupParse(){
+    // public static String jsoupParse()
+    // {
     //     StringBuilder str = new StringBuilder();
-    //     try{
+    //     try
+    //     {
     //         Document doc = Jsoup.connect("https://www.google.com").get();
 
     //         // get page title
@@ -186,8 +200,9 @@ public class ParseMovies {
     //             str.append("<br>link : " + link.attr("href"));
     //             str.append("<br>text : " + link.text());
     //         }
-
-    //     } catch (IOException e) {
+    //     } 
+    //     catch (IOException e) 
+    //     {
     //         e.printStackTrace();
     //     }
     //     return str.toString();

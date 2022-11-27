@@ -1,18 +1,20 @@
 package com.example.reelmovies;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 // import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Random;
 
 @SpringBootApplication
 @RestController
-public class SpringtestApplication implements CommandLineRunner {
+public class SpringtestApplication implements CommandLineRunner 
+{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
+		// TODO: logout.html still shows logout when already logged out
 		SpringApplication.run(SpringtestApplication.class, args);
 	}
 
@@ -20,12 +22,12 @@ public class SpringtestApplication implements CommandLineRunner {
 	private MovieRepository movieRepository;
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) throws Exception 
+	{
 		Movie movie = new Movie();
-		Random random = new Random();
-        int randomMovie = random.nextInt(812104) + 1;
         ParseMovies m = new ParseMovies();
-        m.setMovie(randomMovie);
+		int randomMovieFromDiscover = ApiGetMethod.getMovieFromDiscover();
+        m.setMovie(randomMovieFromDiscover);
 
 		movie.setPosterPath(m.getPosterPath());
 		movie.setTitle(m.getTitle());
@@ -41,8 +43,10 @@ public class SpringtestApplication implements CommandLineRunner {
 	}
 
 	// @Bean
-	// CommandLineRunner runner(MovieRepository repository) {
-	// 	return args -> {
+	// CommandLineRunner runner(MovieRepository repository) 
+	// {
+	// 	return args -> 
+	// 	{
 	// 		Movie movie = new Movie(
 	// 			generateRandInt(),
 	// 			generateRandInt(),
@@ -55,7 +59,8 @@ public class SpringtestApplication implements CommandLineRunner {
 	// 	};
 	// }
 
-	// public static String generateRandInt(){
+	// public static String generateRandInt()
+	// {
 	// 	Random random = new Random();
 	// 	int randomNum = Math.abs(random.nextInt());
 	// 	String t = Integer.toString(randomNum);

@@ -1,14 +1,14 @@
 package com.example.reelmovies;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
 
 @Controller
 public class ApiGetMethod 
@@ -17,11 +17,21 @@ public class ApiGetMethod
 
     // Hide API Key by getting it from application.properties
     @Value("${TMDB_API_Key}")
-    public void setMyProperty(String myValue) {
+    public void setMyProperty(String myValue) 
+    {
         this.API_KEY = myValue;
     }
 
-    public static String getURLToRead() //Discover method
+    public static int getMovieFromDiscover()
+    {
+        String getHtmlString = getHTML(getDiscoverURLToRead());
+        List<Integer> listOfMovieIDs = getMovieID(getHtmlString);
+        int getRandomMovieIDFromDiscover = getRandomMovieIDFromDiscover(listOfMovieIDs);
+        int randomMovieFromDiscover = getRandomMovieIDFromDiscover;
+        return randomMovieFromDiscover;
+    }
+
+    public static String getDiscoverURLToRead() //Discover method
     {
         Random rand = new Random();
         StringBuilder urlStringBuilder = new StringBuilder();
@@ -34,7 +44,7 @@ public class ApiGetMethod
         return urlStringBuilder.toString();
     }
 
-    public static String getURLToRead2() //Popular method
+    public static String getPopularURLToRead() //Popular method
     {
         Random rand = new Random();
         StringBuilder urlStringBuilder = new StringBuilder();
@@ -46,7 +56,7 @@ public class ApiGetMethod
     }
 
 
-    public static String getURLToRead3(int movieID) //Recommendations method
+    public static String getRecommendationsURLToRead(int movieID) //Recommendations method
     {
         StringBuilder urlStringBuilder = new StringBuilder();
         urlStringBuilder.append("https://api.themoviedb.org/3/movie/");
@@ -74,32 +84,34 @@ public class ApiGetMethod
             }
             // System.out.println("index of id" + result.indexOf("\"id\":") + "\n");
             return result.toString();
-        } catch(Exception e) {
+        } 
+        catch(Exception e) 
+        {
             e.printStackTrace();
             return "";
         }
     }
 
-    public static List<Integer> getMovieID(String getHtmlString) 
+    public static List<Integer> getMovieID(String stringFromGetHtml) 
     {
         try
         {
             List<Integer> listOfMovieIDs = new ArrayList<Integer>();
             String movieIDAsString = "";
     
-            for(int i = 0; i < getHtmlString.length()-5; i++) 
+            for(int i = 0; i < stringFromGetHtml.length()-5; i++) 
             {
                 movieIDAsString = "";
-                String testForID = getHtmlString.substring(i, i+5);
+                String testForID = stringFromGetHtml.substring(i, i+5);
                 // Checks if substring equals "id\":
                 if(testForID.equals("\"id\":")) 
                 {
                     for(int j = 0; j < 6; j++) 
                     {
                         // Checks if ASCII value of char after substring is an int
-                        if((int)getHtmlString.charAt(i+5+j) >= 48 && (int)getHtmlString.charAt(i+5+j) <= 57) 
+                        if((int)stringFromGetHtml.charAt(i+5+j) >= 48 && (int)stringFromGetHtml.charAt(i+5+j) <= 57) 
                         {
-                            movieIDAsString += getHtmlString.charAt(i+5+j);
+                            movieIDAsString += stringFromGetHtml.charAt(i+5+j);
                             // System.out.println(movieIDAsString);
                         }
                     }
@@ -110,7 +122,9 @@ public class ApiGetMethod
                 }
             }
             return listOfMovieIDs;
-        } catch(Exception e) {
+        } 
+        catch(Exception e) 
+        {
             e.printStackTrace();
             return null;
         }

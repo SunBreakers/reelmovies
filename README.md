@@ -1,10 +1,10 @@
 # Reel Movies  
   
-We are creating a movie recommendation webservice using Java, Spring, AWS EC2, AWS Cognito and MongoDB.  
+We are creating a movie recommendation webservice using Java, Spring, MongoDB, AWS EC2 and AWS Cognito.  
   
 We deployed our first release using AWS EC2!  
-http://reelmovies.net  
-http://reelmovies.net/movies  
+https://reelmovies.net  
+https://reelmovies.net/movies  
   
 Our .java files are located at:  
 https://github.com/SunBreakers/reelmovies/tree/main/src/main/java/com/example/reelmovies  

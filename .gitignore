@@ -34,3 +34,6 @@ build/
 
 ### TMDB API Key, MongoDB Connection String and AWS Cognito settings ###
 application.properties
+
+### JKS file for https ###
+https-reelmovies.jks

@@ -21,7 +21,7 @@ public class ApiGetMethod
         this.API_KEY = myValue;
     }
 
-    public static String getURLToRead()
+    public static String getURLToRead() //Discover method
     {
         Random rand = new Random();
         StringBuilder urlStringBuilder = new StringBuilder();
@@ -42,6 +42,18 @@ public class ApiGetMethod
         urlStringBuilder.append(API_KEY);
         urlStringBuilder.append("&language=en-US&page=");
         urlStringBuilder.append(rand.nextInt(9)+1);
+        return urlStringBuilder.toString();
+    }
+
+
+    public static String getURLToRead3(int movieID) //Recommendations method
+    {
+        StringBuilder urlStringBuilder = new StringBuilder();
+        urlStringBuilder.append("https://api.themoviedb.org/3/movie/");
+        urlStringBuilder.append(String.valueOf(movieID));
+        urlStringBuilder.append("/recommendations?api_key=");
+        urlStringBuilder.append(API_KEY);
+        urlStringBuilder.append("&language=en-US&page=1");
         return urlStringBuilder.toString();
     }
 

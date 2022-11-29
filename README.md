@@ -7,11 +7,11 @@ https://reelmovies.net
 https://reelmovies.net/movies  
   
 Our .java files are located at:  
-https://github.com/SunBreakers/reelmovies/tree/main/src/main/java/com/example/reelmovies  
+https://github.com/SunBreakers/reelmovies/tree/main/src/main/java/net/reelmovies/sunbreakers  
   
 Our .html files are located at:  
 https://github.com/SunBreakers/reelmovies/tree/main/src/main/resources/static  
 https://github.com/SunBreakers/reelmovies/tree/main/src/main/resources/templates  
   
 Our JUnit test files are located at:  
-https://github.com/SunBreakers/reelmovies/tree/main/src/test/java/com/example/reelmovies  
+https://github.com/SunBreakers/reelmovies/tree/main/src/test/java/net/reelmovies/sunbreakers  

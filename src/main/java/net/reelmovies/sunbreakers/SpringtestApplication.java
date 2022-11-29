@@ -1,4 +1,4 @@
-package com.example.reelmovies;
+package net.reelmovies.sunbreakers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,12 @@ public class SpringtestApplication implements CommandLineRunner
 
 	public static void main(String[] args) 
 	{
-		// TODO: logout.html still shows logout when already logged out
+		// TODO: use recommended get method when user likes a movie
+		// TODO: add questionnaire when first signing up
+		// TODO: fix spacing between login and info slides buttons
+		// TODO: move login button to movies page
+		// TODO: add film age rating
+		// TODO: comment code
 		SpringApplication.run(SpringtestApplication.class, args);
 	}
 

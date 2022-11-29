@@ -1,10 +1,11 @@
-package com.example.reelmovies;
+package net.reelmovies.sunbreakers;
 
 import com.uwetrottmann.tmdb2.entities.Genre;
 import com.uwetrottmann.tmdb2.entities.Movie;
 import com.uwetrottmann.tmdb2.services.MoviesService;
 import com.uwetrottmann.tmdb2.Tmdb;
 // import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 // import org.jsoup.Jsoup;
 // import org.jsoup.nodes.Document;
@@ -47,8 +48,8 @@ public class ParseMovies
             {
                 this.movie = response.body();
                 System.out.println("Testing movie: (" + randomMovie + ") " + this.movie.title);
-                // this.movie.popularity < 1
-                while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null || this.movie.imdb_id == null || this.movie.runtime == null || this.movie.release_date == null || this.movie.genres == null || !this.movie.original_language.contains("en")) // prevents null, adult movies or movies without posters from showing
+                // !this.movie.original_language.contains("en"), this.movie.popularity < 1
+                while(this.movie == null || this.movie.adult == true || this.movie.poster_path == null || this.movie.imdb_id == null || this.movie.runtime == null || this.movie.release_date == null || this.movie.genres == null) // prevents null, adult movies or movies without posters from showing
                 {
                     // randomMovie = random.nextInt(812104) + 1;
                     randomMovie = ApiGetMethod.getMovieFromDiscover();
@@ -166,7 +167,8 @@ public class ParseMovies
         {
             return 0;
         }
-        return this.movie.vote_average;
+        DecimalFormat df = new DecimalFormat("####0.00");
+        return Double.valueOf(df.format(this.movie.vote_average));
     }
 
     public int getVoteCount() 

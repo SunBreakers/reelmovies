@@ -37,4 +37,7 @@ application.properties
 
 ### JKS file for https ###
 *.jks
-*.crt
+# *.crt
+# *.p12
+# *.pfx
+# *.key

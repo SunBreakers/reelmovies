@@ -1,4 +1,4 @@
-package com.example.reelmovies;
+package net.reelmovies.sunbreakers;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

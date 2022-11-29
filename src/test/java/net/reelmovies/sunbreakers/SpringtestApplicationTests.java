@@ -1,4 +1,4 @@
-package com.example.reelmovies;
+package net.reelmovies.sunbreakers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

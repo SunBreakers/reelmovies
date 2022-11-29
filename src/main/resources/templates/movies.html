@@ -39,7 +39,7 @@ class="gray-background">
                     <p th:text="'Genres: ' + ${movieGenres}" /> <!-- FIX: Printing Genres -->
                     <p th:text="'Runtime: ' + ${movieRuntime}" />
                     <p th:text="'Release Date: ' + ${movieReleaseDate}" />
-                    <p th:text="'Vote Average: ' + ${movieVoteAverage} + '/10.0'" />
+                    <p th:text="'Vote Average: ' + ${movieVoteAverage} + '/10'" />
                     <p th:text="'Vote Count: ' + ${movieVoteCount} + ' votes'" />
                     <p>
                         IMDB Link: <a th:href="${imdb_id}" target="_blank"><p th:text="${imdb_id}" /></a>
@@ -48,11 +48,11 @@ class="gray-background">
                 </div>
             </div>
             <div class="tcontrols">
-                <a href="/movies?name=disliked">
+                <a href="/movies?name=disliked" title="Dislike">
                     <img src="public\playground_assets\red-x.png" class="button"
                     alt="Dislike Button">
                 </a>
-                <a href="/movies?name=liked">
+                <a href="/movies?name=liked" title="Like">
                     <img src="public\playground_assets\green-heart.png" class="button"
                     alt="Like Button">
                 </a>

@@ -1,4 +1,4 @@
-package com.example.reelmovies;
+package net.reelmovies.sunbreakers;
 
 // import com.uwetrottmann.tmdb2.entities.Genre;
 // import java.util.List;

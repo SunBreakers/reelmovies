@@ -1,4 +1,4 @@
-package com.example.reelmovies;
+package net.reelmovies.sunbreakers;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

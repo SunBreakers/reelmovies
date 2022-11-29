@@ -1,4 +1,4 @@
-package com.example.reelmovies;
+package net.reelmovies.sunbreakers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

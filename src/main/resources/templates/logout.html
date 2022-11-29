@@ -20,6 +20,8 @@
                         <div class="box">
                             Hello, <strong th:text="${#authentication.name}"></strong>!
                         </div>
+                        <a th:href="@{https://reelmovies.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=https://reelmovies.net/logout}" class="btn btn-primary">Logout</a>
+                        <!-- <a th:href="@{https://reelmovies.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=https://localhost/logout}" class="btn btn-primary">Logout</a> -->
                     </div>
 
                     <div sec:authorize="isAnonymous()">
@@ -29,8 +31,6 @@
                                 Cognito</a>
                         </div>
                     </div>
-                    <a th:href="@{https://reelmovies.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=https://reelmovies.net/logout}" class="btn btn-primary">Logout</a>
-                    <!-- <a th:href="@{https://reelmovies.auth.us-west-2.amazoncognito.com/logout?client_id=1ekek9fs70gf8tjs3kopihruqi&logout_uri=https://localhost/logout}" class="btn btn-primary">Logout</a> -->
                 </div>
             </div>
         </section>

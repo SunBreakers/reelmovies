@@ -1,11 +1,12 @@
-package com.example.reelmovies;
+package net.reelmovies.sunbreakers;
 
-// import com.example.reelmovies.ParseMovies;
+// import net.reelmovies.sunbreakers.ParseMovies;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: Fix ParseMoviesTest JUnit testing
 public class ParseMoviesTest 
 {
     private ParseMovies m;

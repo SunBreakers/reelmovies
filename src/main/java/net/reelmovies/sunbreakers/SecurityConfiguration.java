@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+// Configures AWS Cognito login and logout
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter 
 {

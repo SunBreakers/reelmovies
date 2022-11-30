@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 // import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 
+// Runs program and added a random to MongoDB when ran
 @SpringBootApplication
 @RestController
 public class SpringtestApplication implements CommandLineRunner 
@@ -19,6 +20,7 @@ public class SpringtestApplication implements CommandLineRunner
 		// TODO: fix spacing between login and info slides buttons
 		// TODO: move login button to movies page
 		// TODO: add film age rating
+		// TODO: remove extra try catch statements
 		// TODO: comment code
 		SpringApplication.run(SpringtestApplication.class, args);
 	}

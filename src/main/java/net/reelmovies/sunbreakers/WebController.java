@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.ModelAndView;
 
+// Sets different pages like /movies and /AmazonCognito and adds attributes to them
 @Controller
 public class WebController implements WebMvcConfigurer 
 {

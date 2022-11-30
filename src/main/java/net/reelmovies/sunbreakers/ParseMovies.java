@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 // import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 
+// Connects to TMDB API and returns info about the movie
 @Controller
 public class ParseMovies 
 {

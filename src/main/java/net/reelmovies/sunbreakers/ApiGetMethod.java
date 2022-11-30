@@ -10,6 +10,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
+// Use TMDB API Get method and returns the movie ids as an integer
 @Controller
 public class ApiGetMethod 
 {
@@ -37,8 +38,7 @@ public class ApiGetMethod
         StringBuilder urlStringBuilder = new StringBuilder();
         urlStringBuilder.append("https://api.themoviedb.org/3/discover/movie?api_key=");
         urlStringBuilder.append(API_KEY);
-        urlStringBuilder.append("&language=en&sort_by=popularity.desc&include_adult=false&include_video=false");
-        urlStringBuilder.append("&page=");
+        urlStringBuilder.append("&language=en&sort_by=popularity.desc&include_adult=false&include_video=false&page=");
         urlStringBuilder.append(rand.nextInt(9)+1);
         urlStringBuilder.append("&with_watch_monetization_types=flatrate");
         return urlStringBuilder.toString();

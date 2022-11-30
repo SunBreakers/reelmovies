@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>net.reelmovies</groupId>
 	<artifactId>sunbreakers</artifactId>
-	<version>1.1.0-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<name>springtest</name>
 	<description>We are creating a movie recommendation webservice using Java, Spring, MongoDB, AWS EC2 and AWS Cognito.</description>
 	<properties>

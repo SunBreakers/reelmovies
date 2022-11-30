@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+// Sets what data will be added to MongoDB
 @Data
 @Document(collection = "parseMovies")
 @Getter

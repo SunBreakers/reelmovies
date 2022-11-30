@@ -4,9 +4,13 @@ package net.reelmovies.sunbreakers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+// import org.junit.jupiter.api.Test;
 import org.junit.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
 // TODO: Fix ParseMoviesTest JUnit testing
+// JUnit test for getting a movie from TMDB API
+// @SpringBootTest
 public class ParseMoviesTest 
 {
     private ParseMovies m;

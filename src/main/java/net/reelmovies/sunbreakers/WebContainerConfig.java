@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// Redirects http to https
 @Configuration
 public class WebContainerConfig {
 
